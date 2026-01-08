@@ -75,7 +75,7 @@ export default function Example() {
 
     } catch (error) {
 
-      toast.error('Error Login user:', error);
+      toast.error('Error Login user:', error.message);
     }
   };
   return (

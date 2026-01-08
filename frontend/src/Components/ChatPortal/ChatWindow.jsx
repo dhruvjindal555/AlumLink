@@ -347,7 +347,7 @@ const ChatWindow = () => {
                 )}
               </Typography>
             </Box>
-            <Box>
+            {/* <Box>
               <Tooltip title="Voice call">
                 <IconButton>
                   <Phone size={20} />
@@ -366,7 +366,7 @@ const ChatWindow = () => {
                   <Info size={20} />
                 </IconButton>
               </Tooltip>
-            </Box>
+            </Box> */}
           </Box>
 
           {/* Chat messages - with its own scrollbar */}
@@ -617,7 +617,7 @@ const ChatWindow = () => {
                   maxRows={4}
                   value={typeof message === 'object' ? message.text || '' : message}
                   onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyPress}
                   placeholder="Type a message..."
                   variant="outlined"
                   size="small"

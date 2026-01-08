@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { 
-  Box, Typography, Avatar, Badge, IconButton, Paper, Divider, 
+import {
+  Box, Typography, Avatar, Badge, IconButton, Paper, Divider,
   List, ListItem, ListItemAvatar, ListItemText, Tooltip
 } from '@mui/material';
-import { 
-  MoreVertical, Mic, LogOut, FileText, Star, Database, Image, User 
+import {
+  MoreVertical, Mic, LogOut, FileText, Star, Database, Image, User
 } from 'lucide-react';
 import { ChatContext } from './ChatContext';
 
@@ -18,23 +18,23 @@ const UserDetail = () => {
   // console.log("selected chat role is ",selectedChat)
   const isStudent = selectedChat.role === 'student'; // Check if user is a student
   const isAlumnus = selectedChat.role === 'alumini'; // Check if user is an alumnus
-// console.log("selected chat is alumini",isAlumnus);
+  // console.log("selected chat is alumini",isAlumnus);
   const userDetails = isStudent
-  ? `College: ${selectedChat?.collegeName || 'N/A'}\nSemester: ${selectedChat?.currentSemester || 'N/A'}\nBranch: ${selectedChat?.branch || 'N/A'}`
-  : isAlumnus
-  ? `Company: ${selectedChat?.workingOrganisation || 'N/A'}\nPosition: ${selectedChat?.position || 'N/A'}`
-  : "No additional details available";
+    ? `College: ${selectedChat?.collegeName || 'N/A'}\nSemester: ${selectedChat?.currentSemester || 'N/A'}\nBranch: ${selectedChat?.branch || 'N/A'}`
+    : isAlumnus
+      ? `Company: ${selectedChat?.workingOrganisation || 'N/A'}\nPosition: ${selectedChat?.position || 'N/A'}`
+      : "No additional details available";
 
   return (
     <Paper sx={{ width: 320, display: 'flex', flexDirection: 'column', borderRadius: 0 }}>
       {/* Chat information header */}
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e0e0e0' }}>
         <Typography variant="subtitle1" fontWeight="medium">Details</Typography>
-        <Typography variant="subtitle1">
+        {/* <Typography variant="subtitle1">
           <MoreVertical size={20} />
-        </Typography>
+        </Typography> */}
       </Box>
-      
+
       {/* Contact profile */}
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 4, pb: 3 }}>
         <Badge
@@ -49,8 +49,8 @@ const UserDetail = () => {
             },
           }}
         >
-          <Avatar 
-            alt={selectedChat.name} 
+          <Avatar
+            alt={selectedChat.name}
             src={`${apiUrl}/api/v1/auth/uploadss/${selectedChat?.profileImageUrl}`}
             sx={{ width: 80, height: 80 }}
           />
@@ -73,35 +73,35 @@ const UserDetail = () => {
           </Tooltip>
         </Box>
       </Box>
-      
-      <Divider />
+
+      {/* <Divider /> */}
 
       {/* Options list */}
-      <List>
+      {/* <List>
         <ListItem button sx={{ py: 2 }}>
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: '#e3f2fd' }}>
               <FileText size={18} color="#2196f3" />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText 
-            primary="Docs, Link, Media" 
+          <ListItemText
+            primary="Docs, Link, Media"
             secondary={<Typography variant="caption" sx={{ bgcolor: '#e3f2fd', px: 1, py: 0.2, borderRadius: 1, color: '#2196f3' }}>230</Typography>}
           />
         </ListItem>
-        
+
         <ListItem button sx={{ py: 2 }}>
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: '#fff8e1' }}>
               <Star size={18} color="#ffc107" />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText 
-            primary="Star Message" 
+          <ListItemText
+            primary="Star Message"
             secondary={<Typography variant="caption" color="text.secondary">Empty</Typography>}
           />
         </ListItem>
-        
+
         <ListItem button sx={{ py: 2 }}>
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: '#e8f5e9' }}>
@@ -110,7 +110,7 @@ const UserDetail = () => {
           </ListItemAvatar>
           <ListItemText primary="Storage Settings" />
         </ListItem>
-        
+
         <ListItem button sx={{ py: 2 }}>
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: '#f3e5f5' }}>
@@ -119,8 +119,8 @@ const UserDetail = () => {
           </ListItemAvatar>
           <ListItemText primary="Chat Wallpaper" />
         </ListItem>
-      </List>
-      
+      </List> */}
+
       <Box sx={{ flexGrow: 1 }} />
     </Paper>
   );

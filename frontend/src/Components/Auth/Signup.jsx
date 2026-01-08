@@ -35,7 +35,7 @@ function SignUp() {
   useEffect(() => {
     const fetchCollegeNames = async () => {
       try {
-        const response = await axios.get("${apiUrl}/api/v1/auth/clgNames");
+        const response = await axios.get(`${apiUrl}/api/v1/auth/clgNames`);
         if (response.data.success) {
           setCollegeOptions(response.data.data);
         }
@@ -92,7 +92,8 @@ function SignUp() {
       if (profileImageUrl) {
         formData.append("profileImageUrl", profileImageUrl);
       }
-
+      console.log(apiUrl);
+      
 
       await axios.post(`${apiUrl}/api/v1/auth/register`, formData);
       navigate("/login");

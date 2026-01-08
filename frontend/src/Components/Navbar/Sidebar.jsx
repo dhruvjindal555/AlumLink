@@ -44,7 +44,6 @@ export const Sidebar = () => {
     { icon: faNewspaper, text: "Blogs", link: "/blogs" },
     { icon: faHandHoldingDollar, text: "Donation Portal", link: "/donationPortal" },
     { icon: faComment, text: "Connect", link: "/chatPortal" },
-    { icon: faEnvelope, text: "Contact Us", link: "/contact" }
   ];
 
   return (

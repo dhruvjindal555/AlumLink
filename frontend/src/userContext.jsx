@@ -14,7 +14,6 @@ export function UserContextProvider({ children }) {
     const fetchUserDetails = async () => {
       try {
         const token = Cookies.get('token');
-        // console.log(token);
         if (token) {
           const response = await axios.get(`${apiUrl}/api/v1/auth/getuser`, {
             headers: {
@@ -24,10 +23,11 @@ export function UserContextProvider({ children }) {
 
           setUser(response.data.user);
           setRole(response.data.role);
-          setReady(true);
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
+      } finally {
+        setReady(true); // ✅ THE FIX
       }
     };
 

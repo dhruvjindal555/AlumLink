@@ -25,6 +25,7 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
     maxDate: '',
     documents: []
   });
+
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const [error, setError] = useState(false);
@@ -52,7 +53,14 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
   };
 
   const handleSubmit = async () => {
-    if (!donationData.title || !donationData.description || !donationData.totalDonation || !donationData.maxDate || donationData.documents.length === 0) {
+    if (
+      !donationData.title ||
+      !donationData.category ||
+      !donationData.description ||
+      !donationData.totalDonation ||
+      !donationData.maxDate ||
+      donationData.documents.length === 0
+    ) {
       setError(true);
       return;
     }
@@ -64,23 +72,24 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
     formData.append("amountRequired", donationData.totalDonation);
     formData.append("deadline", donationData.maxDate);
 
-    // Append files
     donationData.documents.forEach((file) => {
       formData.append("supportingDocuments", file);
     });
+
     if (userData?._id) {
       formData.append("createdBy", userData._id);
     }
+
     try {
       const response = await axios.post(`${apiUrl}/api/v1/donations/newDonation`, formData);
-      console.log("Success:", response.data);
-      toast.success("new donation request added sucessfully")
-      // onSubmit(response.data);
+      toast.success("New donation request added successfully");
       onClose();
+      setError(false);
     } catch (error) {
       console.error("Error submitting donation request:", error);
     }
   };
+
   return (
     <Modal open={open} onClose={onClose}>
       <Box
@@ -110,20 +119,26 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           value={donationData.title}
           onChange={handleInputChange}
           margin="dense"
+          error={error && !donationData.title}
+          helperText={error && !donationData.title ? "Title is required" : ""}
         />
+
         <TextField
           select
           fullWidth
           label="Category"
           name="category"
-          value={donationData?.category}
+          value={donationData.category}
           onChange={handleInputChange}
           margin="dense"
+          error={error && !donationData.category}
+          helperText={error && !donationData.category ? "Category is required" : ""}
         >
           {categoryOptions.map((option) => (
             <MenuItem key={option} value={option}>{option}</MenuItem>
           ))}
         </TextField>
+
         <TextField
           fullWidth
           multiline
@@ -133,7 +148,10 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           value={donationData.description}
           onChange={handleInputChange}
           margin="dense"
+          error={error && !donationData.description}
+          helperText={error && !donationData.description ? "Description is required" : ""}
         />
+
         <TextField
           fullWidth
           type="number"
@@ -142,7 +160,10 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           value={donationData.totalDonation}
           onChange={handleInputChange}
           margin="dense"
+          error={error && !donationData.totalDonation}
+          helperText={error && !donationData.totalDonation ? "Amount is required" : ""}
         />
+
         <TextField
           fullWidth
           type="date"
@@ -152,6 +173,8 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           onChange={handleInputChange}
           margin="dense"
           InputLabelProps={{ shrink: true }}
+          error={error && !donationData.maxDate}
+          helperText={error && !donationData.maxDate ? "Deadline is required" : ""}
         />
 
         <Button
@@ -159,7 +182,7 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           component="label"
           fullWidth
           sx={{ mt: 2 }}
-          color={error ? "error" : "primary"}
+          color={error && donationData.documents.length === 0 ? "error" : "primary"}
         >
           Upload Documents (PDF) *
           <input
@@ -171,13 +194,12 @@ const DonationRequestModal = ({ open, onClose, userData }) => {
           />
         </Button>
 
-        {error && (
+        {error && donationData.documents.length === 0 && (
           <Typography color="error" variant="caption" sx={{ mt: 1, display: 'block' }}>
             Please upload at least one document
           </Typography>
         )}
 
-        {/* Display selected files as Chips */}
         <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap', gap: 1 }}>
           {donationData.documents.map((file, index) => (
             <Chip

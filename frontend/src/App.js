@@ -39,14 +39,11 @@ function App() {
                 <Route path='/jobPortal' element={<JobHome />} />
                 <Route path='/jobDesc/:jobId' element={<JobDescription />} />
                 <Route path='/job-applications/:jobId' element={<JobApplicantsPage />} />
-                <Route path='/donationPortal' element={<DonationHome />} />
                 <Route path='/blogs' element={<BlogHome />} />
                 <Route path='/blogs/blogIndi/:blogId' element={<BlogIndividual />} />
+                <Route path='/donationPortal' element={<DonationHome />} />
                 <Route path='/chatPortal' element={<ChatPortal />} />
               </Route>
-
-
-
             </Routes>
           </div>
         </GoogleOAuthProvider>

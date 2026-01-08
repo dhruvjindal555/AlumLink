@@ -3,12 +3,18 @@ import { useContext } from 'react';
 import { UserContext } from './userContext';
 
 const ProtectedRoute = () => {
-  const { user } = useContext(UserContext);
+
+
+  const { user, ready } = useContext(UserContext);
+
+  if (!ready) return null; // or loader
 
   if (!user) {
-    return <Navigate to="/login"/>;
+    console.log('Enforced protected routes');
+    return <Navigate to="/login" />;
   }
-  
+
+
   return <Outlet />;
 };
 
