@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { Upload, X, CheckCircle, AlertCircle } from "lucide-react";
 
 const ResumeScoreModal = ({ isOpen, onClose, job }) => {
-    const pythonCodeUrl = process.env.REACT_APP_PYTHON_CODE_URL;
+  const pythonCodeUrl = process.env.REACT_APP_PYTHON_CODE_URL;
 
   const [resume, setResume] = useState(null);
   const [matchScore, setMatchScore] = useState(null);
@@ -30,7 +30,7 @@ const ResumeScoreModal = ({ isOpen, onClose, job }) => {
     setError(null);
     const formData = new FormData();
     formData.append("resume", resume);
-    
+
     const lowercaseSkills = job?.skillsRequired?.map(skill => skill.toLowerCase()) || [];
     formData.append("job_skills", lowercaseSkills.join(','));
 
@@ -57,7 +57,7 @@ const ResumeScoreModal = ({ isOpen, onClose, job }) => {
   const matchedSkills = skills || [];
   const requiredSkills = job?.skillsRequired || [];
   // Convert required skills to lowercase for comparison
-  const missingSkills = requiredSkills.filter(skill => 
+  const missingSkills = requiredSkills.filter(skill =>
     !matchedSkills.includes(skill.toLowerCase())
   );
 
@@ -84,22 +84,23 @@ const ResumeScoreModal = ({ isOpen, onClose, job }) => {
         <div className="p-6 space-y-6">
           {/* Upload Section */}
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <label className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer block">
+
               <Upload className="mx-auto h-12 w-12 text-gray-400" />
               <div className="mt-4">
-                <label className="cursor-pointer">
+                <div className="cursor-pointer">
                   <span className="mt-2 block text-sm font-medium text-gray-600">
                     {resume ? resume.name : "Upload your resume (PDF)"}
                   </span>
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    onChange={handleResumeUpload}
-                    className="hidden"
-                  />
-                </label>
+                </div>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleResumeUpload}
+                  className="hidden"
+                />
               </div>
-            </div>
+            </label>
 
             <button
               onClick={handleSubmit}
@@ -133,10 +134,9 @@ const ResumeScoreModal = ({ isOpen, onClose, job }) => {
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-medium text-gray-900">Match Score</h3>
-                  <span className={`text-2xl font-bold ${
-                    matchScore >= 70 ? 'text-green-600' : 
+                  <span className={`text-2xl font-bold ${matchScore >= 70 ? 'text-green-600' :
                     matchScore >= 50 ? 'text-yellow-600' : 'text-red-600'
-                  }`}>
+                    }`}>
                     {matchScore}%
                   </span>
                 </div>
