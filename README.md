@@ -121,8 +121,8 @@ Card number: 4000 0035 6000 0008
 
 ## Some enrollment numbers in the record are needed for new signup
 
-- ENR7459,ENR41111,ENR36210,ENR42759,ENR64427
-- Just mail the admin if you want to register a new record to database
+- ENR7459, ENR41111, ENR36210, ENR72037, ENR72037
+- Just mail the admin if you want to register a new record in the database
 
 ---
 
