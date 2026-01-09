@@ -5,7 +5,7 @@
 
 ## 🚀 Live Deployment
 
-- 🌍 **Frontend (Vercel):** [alumlink.vercel.app](https://alum-link-beige.vercel.app/)
+- 🌍 **Frontend (Vercel):** [alumlink.vercel.app](https://alum-link-omega.vercel.app/)
 - ⚙️ **Backend (Render):** Hosted with autoscaling APIs and socket server
 - ✅ Ready for **CI/CD integration**
 
@@ -18,7 +18,7 @@
 
 - Employers can **post jobs** with detailed criteria.
 - Candidates can **apply** and check **skill-match** score.
-- Resume Parsing using **Python NLP** extracts skills, education, experience.
+- Resume Parsing using **Python NLP** extracts skills, education, and experience.
 - **Skill Score Evaluation** ensures only suitable applicants proceed.
 - Employer Dashboard shows:
   - Total applicants
@@ -26,20 +26,20 @@
   - Resume view/download
 - Student Dashboard shows:
   - Status of recent Job application
-  - Saved jobs for future
+  - Saved jobs for the future
   - Upcoming interview schedule
     
 
 ### ✍️ Blog Portal
-> Share knowledge, learn and discover
+> Share knowledge, learn, and discover
 
 - Alumni and students can **create blogs** with Markdown support.
 - Blogs feature likes, comments, tags, and reading time.
-- Real time dashboard to track performance of self posted blogs
-- Interactive dashboard with other features also
+- Real-time dashboard to track performance of self-posted blogs
+- An interactive dashboard with other features also
 - Integrated **Python-powered Recommendation System**:
   - Based on TF-IDF / NLP
-  - Personalized suggestions based on likes and on individual blog also
+  - Personalized suggestions based on likes and on the individual blog, also
   - User interest learning over time
 
 ### 💬 Chat/Connect Portal
@@ -57,9 +57,9 @@
 > Give back to the community
 
 - Integrated with **Stripe** for secure payments.
-- User can contribute to various schemes by fellow user
-- Real time staus update by admin if donation request is real or not
-- User can also check request based on provided supported documents 
+- User can contribute to various schemes by fellow users
+- Real time staus update by admin if the donation request is real or not
+- The user can also check the request based on the provided supported documents 
 - Real-time updates on donation goals and progress dashboards.
 - Full **transaction history** for users and admin.
 
@@ -119,10 +119,10 @@ Get notified when:
 ## 💳 Stripe Test Credentials
 Card number: 4000 0035 6000 0008
 
-## Some enrollment numbers in record needed for new signup
+## Some enrollment numbers in the record are needed for new signup
 
 - ENR7459,ENR41111,ENR36210,ENR42759,ENR64427
-- Just mail admin if want to register new record to database
+- Just mail the admin if you want to register a new record to database
 
 ---
 
@@ -146,19 +146,19 @@ Card number: 4000 0035 6000 0008
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/alum-link.git
-cd alum-link
+git clone https://github.com/dhruvjindal555/AlumLink.git
+cd AlumLink
 ```
 
 ### 2. Install Client & Server Dependencies
 
 ```bash
 # Frontend
-cd client
+cd frontend
 npm install
 
 # Backend
-cd ../server
+cd backend
 npm install
 ```
 
@@ -171,13 +171,13 @@ pip install -r requirements.txt
 
 ### 4. Environment Variables
 
-Create `.env` files in both `/client` and `/server` folders:
+Create `.env` files in both `/backend` and `/frontend` folders:
 
 
 ### 5. Run Dev Mode
 
 ```bash
-concurrently "npm run dev --prefix server" "npm start --prefix client"
+concurrently "npm run dev --prefix backend" "npm start --prefix frontend."
 ```
 
 ---
@@ -198,7 +198,7 @@ concurrently "npm run dev --prefix server" "npm start --prefix client"
 - AI-based job suggestions
 - Email notifications
 - Chatbot assistant for alumni support
-- Imrovement in job interview scheduling with automatic scheduler and inbuilt video call feature also
+- Improvement in job interview scheduling withan  automatic scheduler and inbuilt video call feature also
 
 ---
 ## Feel free to share your valuable suggestions and changes
